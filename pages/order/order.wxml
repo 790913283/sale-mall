@@ -1,0 +1,31 @@
+<!--pages/order/order.wxml-->
+<!--<scroll-view class="common-container order-container"  scroll-top="{{top}}" enable-back-to-top="{{true}}" scroll-with-animation="{{true}}" style="height:100vh;" scroll-y="{{true}}" bindscrolltolower="toBottom">-->
+  <view class="main-contain">
+    <view class="order-item" wx:for="{{orderList}}" wx:key="{{index}}">
+      <view class="item-img"><image mode="aspectFit" src="{{item.orderProductList[0].productImg}}"></image></view>
+      <view class="item-main">
+        <view class="main-name">{{item.orderProductList[0].productName}}</view>
+        <view class="main-price">价值{{item.orderProductList[0].subtotal}}元</view>
+        <view class="main-score">{{item.orderProductList[0].integralNumber}}<text>积分</text></view>
+      </view>
+      <view class="item-status">
+        <view class="status-text">
+          <block wx:if="{{item.orderStatus == 2}}"><text></text>待领取</block>
+          <block wx:elif="{{item.orderStatus == 1}}">待付款</block>
+          <block wx:elif="{{item.orderStatus == 3}}">待发货</block>
+          <block wx:elif="{{item.orderStatus == 4}}">已发货</block>
+          <block wx:elif="{{item.orderStatus == 5}}">已完成</block>
+          <block wx:elif="{{item.orderStatus == 6}}">已取消</block>
+          <block wx:elif="{{item.orderStatus == 7}}">待退款</block>
+          <block wx:else>已退款</block>
+        </view>
+        <image wx:if="{{item.orderStatus == 2}}" data-oid="{{item.orderId}}" mode="scaleToFill" bindtap="goResult" class="code-view" src="{{image.code}}"></image>
+      </view>
+    </view>
+    <view class="loading" wx:if="{{loading || pageNo == total}}">
+      <block wx:if="{{pageNo == total}}">已全部加载完</block>
+      <block wx:else>加载中...</block>
+    </view>
+  </view>
+<!--</scroll-view>-->
+

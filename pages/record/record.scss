@@ -1,0 +1,148 @@
+@import '../../_var.scss';
+.record-top{
+  width:100%;
+  background-color:$yellow;
+  height: 230rpx;
+  .c-score{
+    font-size: 28rpx;
+    color: #754110;
+    padding:20rpx 0 0 40rpx;
+    opacity:.6;
+  }
+  .n-score{
+    text-align: center;
+    font-size: 74rpx;
+    color: #754110;
+    font-weight: 600;
+    line-height: 105rpx;
+  }
+  .p-score{
+    font-size:28rpx;
+    color: #FF5050;
+    text-align: center;
+    line-height: 36rpx;
+  }
+}
+.nodata{
+  height:100%;
+  width:100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 50rpx;
+  image{
+    width:150rpx;
+    border-radius: 50%;
+    height: 150rpx;
+  }
+  text{
+    margin-top:30rpx;
+  }
+}
+.main-top{
+  height: 100rpx;
+  display: flex;
+  align-items: center;
+  text{
+    margin-left:44rpx;
+    font-size: 32rpx;
+    color: #333333;
+  }
+  .select-type{
+    font-size: 28rpx;
+    color: #666666;
+    margin-left:auto;
+    margin-right: 40rpx;
+    display: flex;
+    height: 100%;
+    align-items: center;
+    image{
+      width: 34rpx;
+      height: 24rpx;
+      margin-left:5rpx;
+      transform: translateY(3rpx)
+    }
+  }
+}
+.record-main{
+  flex:1;
+}
+.record-intro{
+  display: flex;
+  align-items: center;
+  line-height: 40rpx;
+  flex-direction: column;
+  font-size: 26rpx;
+  color: #999999;
+  padding: 32rpx;
+  view{
+    padding-left: 50rpx;
+    height: 40rpx;
+  }
+  .in-f{
+    position: relative;
+    text{
+      position: absolute;
+      top:0;
+      left:0;
+      height:100%;
+    }
+  }
+}
+.month-item{
+  margin:0 40rpx;
+  .month-top{
+    height: 64rpx;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    background: #F1F1F1;
+    font-size: 28rpx;
+    color: #333333;
+    padding-right: 24rpx;
+    .m-num{
+      margin-right: auto;
+    }
+    text{
+      margin-left:24rpx;
+    }
+  }
+}
+.record-item{
+  height: 150rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-bottom: 2rpx dotted #CCCCCC;
+  padding:0 10rpx;
+  .item-detail{
+    flex:1;
+    width:0;
+    .detail-top{
+      font-size: 32rpx;
+      color: #333333;
+      line-height: 45rpx;
+    }
+    .detail-date{
+      font-size: 28rpx;
+      line-height: 40rpx;
+      color: #999999;
+      margin-top:8rpx;
+    }
+  }
+  .item-score{
+    max-width: 180rpx;
+    font-size: 36rpx;
+    margin-left:10rpx;
+    color: #333333;
+    display: flex;
+    flex-direction: column;
+    .time-pass{
+      font-size: 24rpx;
+      color: #FF7777;
+      margin:auto;
+      line-height: 28rpx;
+    }
+  }
+}

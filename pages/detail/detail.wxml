@@ -1,0 +1,33 @@
+<!--pages/detail/detail.wxml-->
+<scroll-view class="common-container detail-container">
+  <view class="main-contain">
+    <swiper indicator-dots="{{indicatorDots}}" previous-margin="{{pre}}" next-margin="{{next}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+      <block wx:for="{{adultList}}" wx:key="{{index}}">
+        <swiper-item class="item-img">
+          <image src="{{item.img}}" mode="aspectFit" class="slide-image"/>
+        </swiper-item>
+      </block>
+    </swiper>
+    <view class="detail-intro">
+      <view class="intro-name">{{productInfo.productName}}</view>
+      <view class="intro-price">
+        <view class="price-top"><text>{{productInfo.exIntegral}}</text>积分</view>
+        <view class="price-end">价值 ￥{{productInfo.marketPrice}}</view>
+      </view>
+    </view>
+    <view class="content-title">商品介绍</view>
+    <view class="detail-content" style="padding-bottom:20rpx">
+      <view><rich-text class="rich" nodes="{{productInfo.content}}" bindtap="tap"></rich-text></view>
+    </view>
+    <view class="detail-buy">
+      <button bindtap="buy" style="border:0" loading="{{loading}}" disabled="{{buyStatus == 3?true:false}}" plain="{{true}}" data-type="1">
+        <block wx:if="{{buyStatus == -1 || buyStatus == 1}}">立即兑换</block>
+        <block wx:elif="{{buyStatus == 2}}">确定</block>
+        <block wx:else>暂无库存</block>
+    </button>
+    </view>
+  </view>
+</scroll-view>
+<school id="modal-school" pid="{{query.pid}}" mode="{{productInfo.buyMode}}" bind:toParent="getData">
+    
+</school>

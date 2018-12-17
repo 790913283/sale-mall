@@ -1,0 +1,53 @@
+<!--pages/shop/shop.wxml-->
+<scroll-view class="common-container shop-container">
+  <view class="main-contain">
+    <swiper indicator-dots="{{indicatorDots}}" previous-margin="{{pre}}" next-margin="{{next}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+      <block wx:for="{{adultList}}" wx:key="{{index}}">
+        <swiper-item class="item-img">
+          <image src="{{item.img}}" mode="scaleToFill" class="slide-image"/>
+        </swiper-item>
+      </block>
+    </swiper>
+    <view class="shop-title">
+      积分兑好礼
+    </view>
+    <view class="shop-cat">
+      <view class="cat-item{{status == 1?' catActive':''}}" data-status="1" bindtap="setSort">
+        <text>分值</text>
+        <view class="sort-status">
+          <image src="{{sort == 'integral'?image.upActive:image.up}}" mode="aspectFit" class="sort-image"/>
+          <image src="{{sort == 'integral_desc'?image.downActive:image.down}}" mode="aspectFit" class="sort-image sort-desc"/>
+        </view>
+      </view>
+      <view class="cat-item{{status == 2?' catActive':''}}" data-status="2" bindtap="setSort">
+        <text>上新</text>
+        <view class="sort-status">
+          <image src="{{sort == 'time'?image.upActive:image.up}}" mode="aspectFit" class="sort-image"/>
+          <image src="{{sort == 'time_desc'?image.downActive:image.down}}" mode="aspectFit" class="sort-image sort-desc"/>
+        </view>
+      </view>
+      <view class="cat-item last-item{{status == 3?' catActive':''}}" data-status="3" bindtap="setSort">
+        <text>热门</text>
+        <view class="sort-status">
+          <image src="{{sort == 'hot'?image.upActive:image.up}}" mode="aspectFit" class="sort-image"/>
+          <image src="{{sort == 'hot_desc'?image.downActive:image.down}}" mode="aspectFit" class="sort-image sort-desc"/>
+        </view>
+      </view>
+    </view>
+    <view class="shop-list">
+      <view class="list-main">
+        <view class="shop-item" data-id="{{item.productId}}" bindtap="goDetail" wx:for="{{shopList}}" wx:key="{{index}}">
+          <view class="item-top">
+            <view class="top-select"><text></text></view>
+            <view class="img-cover{{item.pictureUrl?'':' no-cover'}}"><image wx:if="{{item.pictureUrl}}" data-index="{{index}}" binderror="showDefault" src="{{item.pictureUrl}}" mode="aspectFit" class="slide-image"/></view>
+            <view class="price-i ellipsis">价值￥{{item.marketPrice}}</view>
+            <view class="top-intro">{{item.productName || '暂无商品名'}}</view>
+          </view>
+          <view class="item-price">
+            <view class="score-i">{{item.exIntegral}}<text>积分</text></view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</scroll-view>

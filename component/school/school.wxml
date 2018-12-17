@@ -1,0 +1,34 @@
+<!--component/school/school.wxml-->
+<view class="modal-school" hidden="{{!show}}">
+  <view class="modal-content" catchtap="stop">
+    <view class="s-title">
+      <view class="t-top">选择校区</view>
+      <image mode="scaleToFill" bindtap="hideModal" class="close" src="{{image.close}}"></image>
+      <view class="t-c">
+        <image mode="scaleToFill" class="search" src="{{image.search}}"></image>
+        <input bindinput="getInput" value="{{inputTxt}}" placeholder="输入校区名或地址" />
+      </view>
+    </view>
+    <view wx:if="{{showLoc}}" class="location">
+      <button class="" plain="{{true}}" style="border:0;padding:0" open-type="openSetting" bindopensetting="callback">
+        <image mode="scaleToFill" class="location-icon" src="{{image.location}}"></image>
+        <text>点击自动定位获取最近校区</text>
+      </button>
+    </view>
+    <scroll-view class="school-list{{selected?' fix-space':''}}"  scroll-y="{{true}}">
+      <view class="list-item{{item.campusId==selected?' selected':''}}" wx:for="{{schoolList}}" wx:key="{{index}}" data-cid="{{item.campusId}}" bindtap="selectItem" data-idx="{{index}}">
+        <view class="item-title">
+          <view class="title-text">{{item.campusCnName}}</view>
+          <view class="title-check" wx:if="{{(mode == 2 || (mode == 1 && item.canStock && item.canStock > 0))?true:false}}"><image wx:if="{{item.campusId==selected}}" mode="scaleToFill"  src="{{image.check}}"></image></view>  
+          <view class="no-stock" wx:if="{{(mode == 1 && (!item.canStock || item.canStock <=0))?true:false}}">缺货</view>
+        </view>
+        <view class="item-address">
+          <view class="add-text">{{item.campusAddress}}</view>
+          <view class="add-k" wx:if="{{item.distance}}">{{item.mindis}}km</view>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+</view>
+
+

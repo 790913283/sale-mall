@@ -1,0 +1,23 @@
+<!--login.wxml-->
+<scroll-view class="common-container login-container">
+  <view class="main-contain">
+    <view class="view-logo"><image mode="scaleToFill" src="{{ image.logo}}"></image></view>
+    <view class="login-form">
+      <view class="form-control">
+        <view class="phone-head">86</view>
+        <view class="phone-number">
+          <input focus="{{true}}" bindinput="getInput"  data-name="phone" type="number" placeholder-style="color:#B6B6B6"  placeholder="输入手机号码" />
+        </view>
+        <button class="code-btn{{(form.phone && form.phone.length == 11)?' code-active':''}}" bindtap="sendSms" plain="{{true}}">{{ (seconds>0 && seconds<60)?seconds:'获取验证码'}}</button>
+      </view>
+      <view class="form-control sms-control">
+        <input focus="{{true}}" bindinput="getInput" data-name="vcode" class="sms" type="number" placeholder-style="color:#B6B6B6" placeholder="输入验证码" />
+      </view>
+   </view>
+   <button loading="{{loading}}"  class="submit-btn{{(form.phone && form.phone.length == 11 && form.vcode)?' sub-active':''}}" bindtap="login" size="large">登录</button>
+   <view class="login-tip">
+    <text class="tip-title">提示:</text>
+    <text class="tip-body">如果已是乐宁学员，请用乐宁账号登录，才能看到对应的积分。</text>
+   </view>
+  </view>
+</scroll-view>

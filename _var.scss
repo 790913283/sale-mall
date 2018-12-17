@@ -1,0 +1,14 @@
+$yellow:#ffdd5d;
+.background{
+  background-size:cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+@mixin clamp($line:2) {
+  overflow : hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: $line;
+  -webkit-box-orient: vertical;
+}

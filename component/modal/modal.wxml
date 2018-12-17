@@ -1,0 +1,16 @@
+<!--components/modal/modal.wxml-->
+<view class="modal" hidden="{{!show}}" bindtap="confirm">
+  <view class="modal-content" catchtap="stop">
+    <view class="modal-title" wx:if="title">
+      {{title}}
+    </view>
+    <view class="modal-body">
+      <slot></slot>
+    </view>
+    <view class="modal-foot" wx:if="{{showFoot}}">
+      <button type="primary" bindtap="confirm" data-value="1">确定</button>
+      <button bindtap="confirm" data-value="2">取消</button>
+    </view>
+  </view>
+</view>
+

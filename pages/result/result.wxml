@@ -1,0 +1,22 @@
+<!--pages/result/result.wxml-->
+<scroll-view class="common-container result-container">
+  <view class="main-contain">
+    <view class="view-code">
+      <block wx:if="{{(orderInfo.orderStatus == 2 && type == 1) || orderInfo.orderStatus == 5}}">
+        <icon type="success" size="100" class="s-icon" />
+        <view class="s-text">{{orderInfo.orderStatus == 5?'领取':'兑换'}}成功</view>
+      </block>
+      <block wx:if="{{orderInfo.orderStatus == 5}}">
+        <view class="i-text">兑换礼品：乐宁文具收纳盒</view>
+      </block>
+      <block wx:if="{{orderInfo.orderStatus == 2}}">
+        <image class="{{type==2?' m-12':''}}" mode="scaleToFill" src="{{qrcode}}"></image>
+        <view class="code-title">凭二维码至<text>五角场</text>校区领取</view>
+        <view class="code-add">杨浦区翔殷路1099号合生汇3楼-19</view>
+        <view class="code-add">（合生汇国际广场）</view>
+        <view class="code-add">每天10:00-18:00</view>
+      </block>
+    </view>
+    <view class="tel">400-700-3128</view>
+  </view>
+</scroll-view>

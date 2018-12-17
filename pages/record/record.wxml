@@ -1,0 +1,47 @@
+<!--pages/record/record.wxml-->
+<wxs src="../../utils/filter.wxs" module="filter" />
+<scroll-view class="common-container record-container">
+  <view class="main-contain" wx:if="{{!loading}}">
+    <view class="record-top">
+      <view class="c-score">当前积分值</view>
+      <view class="n-score">{{accountInfo.availableNumber || 0}}</view>
+      <view class="p-score" wx:if="{{accountInfo.willOverdueNumber}}">{{accountInfo.willOverdueNumber || 0}}积分即将过期</view>
+    </view>
+    <view class="record-main">
+      <view class="main-top">
+        <text>积分记录</text>
+        <picker class="select-type" bindchange="getType" range-key="{{'name'}}" value="{{index}}" range="{{typeList}}">
+          <view class="picker">
+            {{typeList[index].name}}<image mode="scaleToFill" src="{{image.low}}"></image>
+          </view>
+        </picker>
+        <!--<view class="select-type">全部<image mode="scaleToFill" src="{{image.down}}"></image></view>-->
+      </view>
+      <view class="month-item" wx:for="{{accountList}}" wx:key="{{index}}" wx:if="{{accountList.length}}">
+        <!--<view class="month-top">
+          <text class="m-num">本月</text>
+          <text>获取：280</text>
+          <text>使用：30</text>
+        </view>-->
+        <view class="record-item">
+          <view class="item-detail">
+            <view class="detail-top ellipsis">{{item.remarks || ''}}</view>
+            <view class="detail-date ellipsis"><text>{{filter.formatTime(item.createTime)}}</text></view>
+          </view>
+          <view class="item-score">
+            <text>{{item.integralNumber>0?('+'+item.integralNumber):item.integralNumber}}</text>
+            <!--<text class="time-pass">即将过期</text>-->
+          </view>
+        </view>
+      </view>
+      <view class="nodata" wx:if="{{!accountList.length}}">
+        <image mode="scaleToFill" src="{{image.noData}}"></image>
+        <text>没有记录</text>
+      </view>
+    </view>
+    <view class="record-intro">
+      <view class="in-f"><text>注：</text>每年6月30日之前获取的积分到次年1月1日过期，</view>
+      <view class="in-se">每年6月30日之后获取的积分到次年6月30日过期。</view>
+    </view>
+  </view>
+</scroll-view>
