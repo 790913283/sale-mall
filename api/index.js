@@ -14,9 +14,9 @@ const HTTP_CODE = {
   505: "http版本不支持该请求"
 };
 
-const mpproduct = "https://mp.learningbee.net/mall"; //生产
-const mptest = "https://mptest.learningbee.net/mall"; //测试
-const mpdev = "https://mpdev.learningbee.net/mall"; //开发
+const mpproduct = "https://mp.aa.net/mall"; //生产
+const mptest = "https://mptest.aa.net/mall"; //测试
+const mpdev = "https://mpdev.aa.net/mall"; //开发
 // const baseUrl = `${mptest}/lbwx/`;
 const baseUrl = `${mpdev}/`;
 // const baseUrl = `${mpproduct}/`;
