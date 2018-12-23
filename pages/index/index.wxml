@@ -1,85 +1,63 @@
 <!--index.wxml-->
-<scroll-view class="common-container index-container" scroll-y="{{flase}}">
   <view class="main-contain" wx:if="{{!loading}}">
-    <view class="index-top">
-      <view class="user-info background" style="background-image:url({{image.indexTop}})">
-        <view class="info-msg">
-          <view class="msg-icon">
-            <image mode="scaleToFill" src="{{ userInfo.avatarUrl || image.defaultIcon}}"></image>
-            <view class="m-name ellipsis" wx:if="{{isLogin>0}}">{{userInfo.nickName || '乐宁会员'}}</view>
-            <button class="login-btn" open-type="getUserInfo" bindgetuserinfo="getInfo" plain="{{true}}" wx:else>登录/注册</button>
+    <view class="index-top" wx:if="{{topList.length}}">
+      <swiper indicator-dots="{{indicatorDots}}" bindchange="changeIndex" previous-margin="{{pre}}" next-margin="{{next}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+        <block wx:for="{{topList}}" wx:key="{{index}}">
+          <swiper-item class="item-img">
+            <view class="background s-img" style="background-image:url('{{item.image}}')"></view>
+          </swiper-item>
+        </block>
+      </swiper>
+      <view class="current-i"><text>{{current}}</text><text class="c-f">/</text><text class="c-f">{{topList.length || 1}}</text></view>
+    </view>
+    <view class="activity background" wx:if="{{adult.image}}" style="background-image:url('{{adult.image}}')"></view>
+    <view class="cate-list" wx:for="{{cate}}" wx:key="{{index}}" style="margin-top:{{index?8:16}}rpx">
+      <view class="cate-item" wx:for="{{item}}" wx:key="{{idx}}"  wx:for-index="idx" wx:for-item="value">
+        <view class="background c-img" style="background-image:url('{{value.image}}')"></view>
+        <view class="c-text ellipsis">{{value.name || '---'}}</view>
+      </view>
+    </view>
+    <view class="good-list">
+      <view class="good-item" bindtap="goDetail" data-id="{{itm.avator.id}}" wx:for="{{goodsList}}" wx:key="{{index}}">
+        <view class="item-img background" style="background-image:url('{{item.avator.name}}')"></view>
+        <view class="item-main">
+          <view class="main-title"><block wx:if="{{item.level}}">【{{item.level}}】</block>{{item.name}}</view>
+          <view class="main-sub">{{item.des}}</view>
+          <view class="main-price">
+            <view class="price-item">
+              <view class="i-top">当前价</view>
+              <view class="i-bottom">￥{{item.currentPrice}}</view>
+            </view>
+            <view class="price-item">
+              <view class="i-top">最低价</view>
+              <view class="i-bottom">￥{{item.minPrice}}</view>
+            </view>
+            <view class="car-item" catchtap="addCart"><image mode="scaleToFill" src="../../static/cart.png"></image></view>
           </view>
-          <!--<view class="msg-code">
-            <view class="c-text">账号管理</view>
-            <image mode="scaleToFill" src="{{image.code}}"></image>
-          </view>-->
-        </view>
-        <view class="score-detail">
-          <block wx:if="{{isLogin>0}}">
-            <view class="detail-item item-first" bindtap="goRecord">
-              <view class="d-top">{{totalMount.availableNumber || 0}}</view>
-              <view class="d-end">我的积分</view>
-            </view>
-            <view class="detail-item" bindtap="loginOut">
-              <view class="d-top">0</view>
-              <view class="d-end">我的兑换</view>
-            </view>
-          </block>
-          <block wx:else>
-            <button bindgetuserinfo="getInfo"  open-type="getUserInfo" plain="{{true}}" style="border:0;padding:0" class="detail-item item-first">
-              <view class="d-top">{{totalMount.availableNumber || 0}}</view>
-              <view class="d-end">我的积分</view>
-              <text class="line-t"></text>
-            </button>
-            <button bindgetuserinfo="getInfo"  open-type="getUserInfo" plain="{{true}}" style="border:0;padding:0"  class="detail-item">
-              <view class="d-top">0</view>
-              <view class="d-end">我的兑换</view>
-            </button>
-          </block>
-        </view>
-        <view class="warn-tip ellipsis" wx:if="{{totalMount.willOverdueNumber && totalMount.willOverdueNumber > 0}}">
-          {{totalMount.willOverdueNumber}}积分即将过期
         </view>
       </view>
     </view>
-    <view class="index-list" wx:if="{{false}}">
-      <view class="list-top">赚积分</view>
-      <view class="item-task">
-        <image mode="scaleToFill" class="task-img" src="{{image.defaultIcon}}"></image>
-        <view class="task-info">
-          <view class="info-top"><text class="ellipsis">分享乐宁</text></view>
-          <view class="info-bottom"><text class="ellipsis">分享乐宁分享乐宁分享乐宁分享乐宁分享乐宁分享乐宁分享乐宁分享乐宁分享乐宁分享乐宁</text></view>
+    <block wx:if="{{activityList.length}}">
+      <view class="h-title">预告活动</view>
+      <view class="good-list">
+        <view class="good-item" bindtap="goDetail" data-id="{{itm.avator.id}}" wx:for="{{activityList}}" wx:key="{{index}}">
+          <view class="item-img background" style="background-image:url('{{item.avator.name}}')"></view>
+          <view class="item-main">
+            <view class="main-title"><block wx:if="{{item.level}}">【{{item.level}}】</block>{{item.name}}</view>
+            <view class="main-sub">{{item.des}}</view>
+            <view class="main-price">
+              <view class="price-item">
+                <view class="i-top">当前价</view>
+                <view class="i-bottom">￥{{item.currentPrice}}</view>
+              </view>
+              <view class="price-item">
+                <view class="i-top">最低价</view>
+                <view class="i-bottom">￥{{item.minPrice}}</view>
+              </view>
+              <view class="car-item"><image mode="scaleToFill" src="../../static/cart.png"></image></view>
+            </view>
+          </view>
         </view>
-        <button class="item-btn">去完成</button>
       </view>
-      <view class="item-task">
-        <image mode="scaleToFill" class="task-img" src="{{image.defaultIcon}}"></image>
-        <view class="task-info">
-          <view class="info-top"><text class="ellipsis">分享乐宁</text></view>
-          <view class="info-bottom"><text class="ellipsis">分享乐宁分享乐宁分享乐宁分享乐宁分享乐宁分享乐宁分享乐宁分享乐宁分享乐宁分享乐宁</text></view>
-        </view>
-        <button class="item-btn">去完成</button>
-      </view>
-    </view>
-    <view class="top-rule">积分获取方法</view>
-    <scroll-view class="index-list rule-list" scroll-y="{{true}}">
-      <view class="rule-item" wx:for="{{ruleList}}" wx:key="{{index}}">
-        <text class="rule-radius"></text>
-        <view class="rule-text">{{item.text}}</view>
-        <view class="rule-num" wx:if="item.num">{{item.num}}</view>
-      </view>
-    </scroll-view>
+    </block>
   </view>
-  <modal id="modal" showFoot="{{modalConfig.foot}}" title="{{modalConfig.title}}">
-    <view class="wrap-score">
-      <scroll-view class="score-modal" scroll-y>
-          <view class="score-item" wx:for="{{scoreList}}" wx:key="{{index}}">
-            <view class="i-name ellipsis">{{item.remarks || ''}}</view>
-            <view class="i-line"></view>
-            <view class="i-num">{{item.integralNumber>0?('+'+item.integralNumber):item.integralNumber}}</view>
-          </view>
-      </scroll-view>
-      <button  class="go-btn" bindtap="goRecord" data-type="1">点击查看</button>
-    </view>
-   </modal>
-</scroll-view>

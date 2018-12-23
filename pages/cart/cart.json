@@ -1,7 +1,7 @@
 {
   "navigationBarBackgroundColor": "#ffffff",
   "navigationBarTextStyle": "black",
-  "navigationBarTitleText": "乐宁积分商城",
+  "navigationBarTitleText": "购物车",
   "backgroundColor": "#ffffff",
   "backgroundTextStyle": "light",
   "enablePullDownRefresh": true

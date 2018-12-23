@@ -25,16 +25,17 @@
 		]
 	},
 	"setting": {
-		"urlCheck": true,
+		"urlCheck": false,
 		"es6": true,
 		"postcss": true,
 		"minified": true,
 		"newFeature": true,
-		"nodeModules": false
+		"nodeModules": false,
+		"autoAudits": false
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.4.0",
-	"appid": "wx3993a0615c5782b9",
+	"appid": "wx5b5edca4934a591b",
 	"projectname": "mall",
 	"debugOptions": {
 		"hidedInDevtools": []

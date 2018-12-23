@@ -13,12 +13,12 @@ const HTTP_CODE = {
   504: "网络超时",
   505: "http版本不支持该请求"
 };
-
+// http://118.178.224.153:8080/xq/user/first.do
 const mpproduct = "https://mp.aa.net/mall"; //生产
-const mptest = "https://mptest.aa.net/mall"; //测试
+const mptest = "http://118.178.224.153:8080/xq"; //测试
 const mpdev = "https://mpdev.aa.net/mall"; //开发
 // const baseUrl = `${mptest}/lbwx/`;
-const baseUrl = `${mpdev}/`;
+const baseUrl = `${mptest}/`;
 // const baseUrl = `${mpproduct}/`;
 // const openid = 'oVP3EwtegMYxJ3NaTnY64ugt29Uk';
 // const AppId = 'wx3993a0615c5782b9';
@@ -181,49 +181,15 @@ const LoginApi = {
 }
 
 const IndexApi = {
-  userInfo: params => {
-    return Http('api/getUserInfo', params)
+  buyList: params => {
+    return Http('/user/first.do', params)
   }
 }
 
 const ProductApi = {
-  productList: params => {
-    return Http('api/getProductList', params)
-  },
-  productDetail: params => {
-    return Http('api/getProductInfo', params)
-  },
-  subOrder: params => {
-    return Http('api/subOrder', params)
-  },
-  orderList: params => {
-    return Http('api/getOrderList', params)
-  },
-  orderInfo: params => {
-    return Http('api/getOrderInfo', params)
-  }
+
 }
 
-const AccountApi = {
-  accountList: params => {
-    return Http('api/getUserIntegralList', params)
-  },
-  accountTotal: params => {
-    return Http('api/getUserIntegral', params)
-  },
-  saveStatus: params => {
-    return Http('api/saveUserIntegralView',params)
-  }
-}
-
-const CampusApi = {
-  campusList: params => {
-    return Http('api/getCampusList', params)
-  },
-  getStock:params => {
-    return Http('api/getCampusProduct', params)
-  }
-}
 
 module.exports = {
   Http,
@@ -232,8 +198,6 @@ module.exports = {
   WxtUserInfo,
   WxAuth,
   LoginApi,
-  AccountApi,
   IndexApi,
-  ProductApi,
-  CampusApi
+  ProductApi
 }

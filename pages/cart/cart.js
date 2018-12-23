@@ -6,37 +6,16 @@ const Request = Object.assign({},API.ProductApi)
 Page({
   data: {
     image:app.globalData.Image,
-    indicatorDots: false,
-    autoplay: false,
-    interval: 5000,
-    duration: 1000,
-    sort:'integral',
-    status:1,
-    per:'0rpx',
-    next:'0rpx',
-    mapStatus:['integral','time','hot'],
-    mapSort:{'integral':'integral_desc','integral_desc':'integral','time_desc':'time','time':'time_desc','hot_desc':'hot','hot':'hot_desc'},
-    adultList:[
-      {img:app.globalData.Image.swipOne}
-    ],
-    shopList:[]
-  },
-  goDetail(e){
-    // this.setData({
-    //   index:Number(e.detail.value)
-    // })
-    wx.navigateTo({
-      url: '../detail/detail?pid='+e.currentTarget.dataset.id
-    })
+    cartList:[]
   },
   onLoad() {
-    GetOpenId().then(res=>{
-      this.getList()
-    })
+    // GetOpenId().then(res=>{
+    //   this.getList()
+    // })
   },
   onPullDownRefresh(){
     wx.showNavigationBarLoading() //在标题栏中显示加载
-    this.getList()
+    // this.getList()
     setTimeout(()=>{
       wx.hideNavigationBarLoading() //完成停止加载
       wx.stopPullDownRefresh() //停止下拉刷新

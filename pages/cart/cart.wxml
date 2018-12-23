@@ -1,0 +1,15 @@
+<!--pages/shop/shop.wxml-->
+  <view class="main-contain">
+    <scroll-view scroll-y="{{true}}" class="cart-list">
+      
+    </scroll-view>
+    <view class="cart-sum">
+      <view class="total">
+        <text>合计</text>
+        <text class="money">￥8.65</text>
+      </view>
+      <view class="sum">
+        结算(1)
+      </view>
+    </view>
+  </view>

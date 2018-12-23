@@ -3,75 +3,49 @@
 const app = getApp();
 const API = require('../../api/index.js');
 const GetOpenId = API.GetOpenId;
-const IndexApi = API.IndexApi;
-const LoginApi = API.LoginApi;
-const WxSetting = API.WxSetting;
-const WxtUserInfo = API.WxtUserInfo;
-const AccountApi = API.AccountApi;
+const Request = Object.assign({},API.IndexApi);
 Page({
   data: {
     userInfo: {},
     image:app.globalData.Image,
-    modalConfig:{
-      title:'恭喜获得以下积分',
-      foot:false
-    },
-    openId:'',
-    isLogin:2, //初始状态
-    scoreList:[],
-    totalMount:{},
-    ruleList:[
-      {text:'到校体验上课',num:'+200'},
-      {text:'报名/续报',num:'+1000'},
-      {text:'学龄每增加一年',num:'+300'},
-      // {text:'正式课程全勤(每季度)',num:'+300'},
-      {text:'介绍朋友到校体验上课',num:'+300'},
-      {text:'介绍朋友报名正式课程',num:'+1000'},
-      {text:'参加每月推出活动',num:''}
-    ]
+    indicatorDots: false,
+    autoplay: false,
+    loading:false,
+    interval: 5000,
+    duration: 1000,
+    current:1,
+    cateList:Array.from({length:10},(v,i)=>{return {id:''}}),
+    cate:[],
+    adult:{},
+    goodsList:[],
+    activityList:[],
+    topList:[]
   },
   //事件处理函数
-  goRecord(e) {
-    let type = e.currentTarget.dataset.type;
-    if(type){
-      this.modalContent.hideModal()
-    }
-    if(this.data.isLogin == 2) return
+  goDetail(e) {
+    let id = e.currentTarget.dataset.id;
     wx.navigateTo({
-      url: '../record/record'
+      url: '../detail/detail?id='+id
     })
-  },
-  goLogin(){
-    wx.navigateTo({
-      url: '../login/login'
-    })
-  },
-  loginOut(){
-    wx.navigateTo({
-      url: '../order/order'
-    })
-    // LoginApi.loginout({openId:this.data.openId}).then(res=>{
-    //   wx.redirectTo({
-    //     url:'../login/login'
-    //   })
-    // })
   },
   onLoad() {
     this.modalContent = this.selectComponent("#modal");
+    this.setData({
+      cate:this.data.cateList.reduce((rows, key, index) => (index % 5 == 0 ? rows.push([key]) : rows[rows.length-1].push(key)) && rows, [])
+    })
+    console.log(this.data.cate)
     this.init()
   },
   init(){
-    GetOpenId().then(res=>{
-      this.data.openId = res.openid;
-      return LoginApi.islogin({openId:this.data.openId})
-    }).then(res=>{
-      this.setData({
-        isLogin:res.data.isLogin
-      })
-      this.getAccount();
-      this.getTotal();
-      this.getUserInfo(this.data.openId);
+    this.getList()
+  },
+  changeIndex(e){
+    this.setData({
+      current:e.detail.current+1
     })
+  },
+  addCart(e){
+
   },
   onPullDownRefresh(){
     wx.showNavigationBarLoading()
@@ -81,50 +55,29 @@ Page({
       wx.stopPullDownRefresh()
     },500);
   },
-  getAccount(){
-    let updata = {
-      type:1,
-      startTime:'',
-      endTime:'',
-      isView:0
-    };
-    GetOpenId().then(res=>AccountApi.accountList(updata)).then(res=>{
-      let list = (res.data && res.data.list)?res.data.list:[];
-      if(!list.length) return
+  getList(){
+    Request.buyList({}).then(res=>{
+      let menu = (res.message && res.message.muluDTOList && res.message.muluDTOList.length)?res.message.muluDTOList:[];
+      menu.push({name:'全部',id:1})
+      menu = menu.reduce((rows, key, index) => (index % 5 == 0 ? rows.push([key]) : rows[rows.length-1].push(key)) && rows, []);
+      let goodsList = (res.message && res.message.nowGoodsList && res.message.nowGoodsList.length)?res.message.nowGoodsList:[];
+      let topList = (res.message && res.message.shouyeList && res.message.shouyeList.length)?res.message.shouyeList:[];
+      let adult = (res.message && res.message.guanggaoDTO)?res.message.guanggaoDTO:{};
+      let activityList = (res.message && res.message.futureGoodsList && res.message.futureGoodsList.length)?res.message.futureGoodsList:[];
       this.setData({
-        scoreList:list,
+       topList:topList,
+       adult:adult,
+       cate:menu,
+       goodsList:goodsList,
+       activityList:activityList
       })
-      this.modalContent.showModal().catch(err=>{
-        AccountApi.saveStatus({})
-      })
+      console.log(this.data.goodsList)
     }).catch(err=>{
       console.error(err)
     })
   },
-  getTotal(){
-    AccountApi.accountTotal({}).then(res=>{
-      this.setData({
-        totalMount:(res.data && res.data.info)?res.data.info:{}
-      })
-    }).catch(err=>{
-      console.error(err)
-    })
-  },
-  getInfo(e){
-    this.goLogin()
-  },
-  getUserInfo(openid){
-    WxSetting().then(res=> WxtUserInfo()).then(res=>{
-      this.setData({
-        userInfo:res.userInfo
-      })
-    }).catch(err=>{
-      IndexApi.userInfo({openId:openid}).then(res=>{
-        this.setData({
-          userInfo:(res.data && res.data.userInfo)?res.data.userInfo : {}
-        })
-      })
-    })
+  setCart(){
+
   },
   onReady() {
     

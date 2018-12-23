@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/shop/shop",
     "pages/index/index",
+    "pages/cart/cart",
     "pages/login/login",
     "pages/record/record",
     "pages/detail/detail",
@@ -13,16 +13,16 @@
     "color": "#999999",
     "list": [
       {
-        "pagePath": "pages/shop/shop",
-        "text": "兑好礼",
-        "iconPath": "static/gift-5.png",
-        "selectedIconPath": "static/gift-6.png"
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "static/index.png",
+        "selectedIconPath": "static/index-active.png"
       },
       {
-        "pagePath": "pages/index/index",
-        "text": "我的",
-        "iconPath": "static/user-5.png",
-        "selectedIconPath": "static/user-6.png"
+        "pagePath": "pages/cart/cart",
+        "text": "购物车",
+        "iconPath": "static/cart.png",
+        "selectedIconPath": "static/cart.png"
       }
     ]
   },
