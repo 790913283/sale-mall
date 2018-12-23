@@ -1,7 +1,10 @@
 <!--pages/shop/shop.wxml-->
   <view class="main-contain">
     <scroll-view scroll-y="{{true}}" class="cart-list">
-      
+      <view class="g-item">
+        <view class="item-main"></view>
+        <view class="item-del">删除</view>
+      </view>
     </scroll-view>
     <view class="cart-sum">
       <view class="total">
