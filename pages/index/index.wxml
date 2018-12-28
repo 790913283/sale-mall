@@ -18,7 +18,7 @@
       </view>
     </view>
     <view class="good-list">
-      <view class="good-item" bindtap="goDetail" data-id="{{itm.avator.id}}" wx:for="{{goodsList}}" wx:key="{{index}}">
+      <view class="good-item" bindtap="goDetail" data-id="{{item.goodsId}}" wx:for="{{goodsList}}" wx:key="{{index}}">
         <view class="item-img background" style="background-image:url('{{item.avator.name}}')"></view>
         <view class="item-main">
           <view class="main-title"><block wx:if="{{item.level}}">【{{item.level}}】</block>{{item.name}}</view>
@@ -40,7 +40,7 @@
     <block wx:if="{{activityList.length}}">
       <view class="h-title">预告活动</view>
       <view class="good-list">
-        <view class="good-item" bindtap="goDetail" data-id="{{itm.avator.id}}" wx:for="{{activityList}}" wx:key="{{index}}">
+        <view class="good-item" bindtap="goDetail" data-id="{{item.goodsId}}" wx:for="{{activityList}}" wx:key="{{index}}">
           <view class="item-img background" style="background-image:url('{{item.avator.name}}')"></view>
           <view class="item-main">
             <view class="main-title"><block wx:if="{{item.level}}">【{{item.level}}】</block>{{item.name}}</view>

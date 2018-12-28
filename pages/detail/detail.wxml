@@ -1,48 +1,48 @@
 <!--pages/detail/detail.wxml-->
   <view class="main-contain">
     <scroll-view scroll-y="{{true}}" class="detail-main">
-      <view class="detail-top background" style="background-image:url('http://image.youpinweb.com/goods_nihoutao.png')">
+      <view class="detail-top background" style="background-image:url('{{info.avator.name}}')">
         <view class="desc">
           <view class="d-text">
-            产地：<text>河北保定</text>
+            产地：<text>{{info.chandi || '暂无产地'}}</text>
           </view>
           <view class="d-text" style="margin-left:auto;">
-            等级：<text>一级</text>
+            等级：<text>{{info.level || '一级'}}</text>
           </view>
         </view>
       </view>
       <view class="detail-pro">
-        <view class="pro-name">河北野生大苹果</view>
-        <view class="pro-desc">纯天然 不添加任何色素</view>
+        <view class="pro-name">{{info.name || '---'}}</view>
+        <view class="pro-desc" wx:if="{{info.desc}}">{{info.des}}</view>
         <view class="pro-price">
           <view class="p-item">
             <text class="i-h">当前价</text>
-            <text class="i-e">￥22.00</text>
+            <text class="i-e">￥{{info.currentPrice || '---'}}</text>
           </view>
           <view class="p-item" style="margin-left:auto">
             <text class="i-h">最低价</text>
-            <text class="i-e">￥22.00</text>
+            <text class="i-e">￥{{info.minPrice || '---'}}</text>
           </view>
-          <view class="p-last">
-            还差<text>5</text>单可达最低价
+          <view class="p-last" wx:if="{{info.buyCount}}">
+            还差<text>{{info.buyCount}}</text>单可达最低价
           </view>
         </view>
       </view>
       <view class="detail-activity">
         <view class="a-time">
-          <view class="t-num">剩余<text>400</text>件</view>
+          <view class="t-num">剩余<text>{{info.totalKucunCount}}</text>件</view>
           <view class="a-min">
             <view class="m-text">
-              <text>剩余</text>
+              <text>{{info.state == 1?'开始':'剩余'}}</text>
               <text>时间</text>
             </view>
-            <text class="t-w">11</text>
+            <text class="t-w">{{ info.timeText?info.timeText[0]:'00'}}</text>
             <text class="t-w w-n">月</text>
-            <text class="t-w">25</text>
+            <text class="t-w">{{ info.timeText?info.timeText[1]:'00'}}</text>
             <text class="t-w w-n">号</text>
-            <text class="t-w">15</text>
+            <text class="t-w">{{ info.timeText?info.timeText[2]:'00'}}</text>
             <text class="t-w w-n">:</text>
-            <text class="t-w">00</text>
+            <text class="t-w">{{ info.timeText?info.timeText[3]:'00'}}</text>
           </view>
         </view>
         <view class="a-user">
@@ -53,12 +53,14 @@
       </view>
       <view class="detail-intro">
         <view class="intro-title"><text>商品详情</text></view>
-        <view class="intro-main"></view>
+        <view class="intro-main">
+          <image wx:for="{{info.imageList}}" wx:key="{{index}}" mode="widthFix" src="{{item.name}}"></image>
+        </view>
       </view>
     </scroll-view>
     <view class="detail-buy">
       <view class="b-icon">
-        <view class="icon-w">
+        <view class="icon-w" bindtap="toIndex">
           <image mode="scaleToFill" src="../../static/index.png"></image>
           <view>首页</view>
         </view>

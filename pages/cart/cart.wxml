@@ -1,8 +1,18 @@
 <!--pages/shop/shop.wxml-->
   <view class="main-contain">
     <scroll-view scroll-y="{{true}}" class="cart-list">
-      <view class="g-item">
-        <view class="item-main"></view>
+      <view class="g-item" wx:for="{{cartList}}" wx:key="{{index}}">
+        <view class="item-main">
+          <view class="main-select"></view>
+          <view class="main-pic background" style="background-image:url('http://image.youpinweb.com/goods_chelizi.png')"></view>
+          <view class="main-info">
+            <view class="info-title">圣女果约1000克</view>
+            <view class="info-price">￥8.56</view>
+          </view>
+          <view class="main-opt">
+            
+          </view>
+        </view>
         <view class="item-del">删除</view>
       </view>
     </scroll-view>

@@ -187,7 +187,9 @@ const IndexApi = {
 }
 
 const ProductApi = {
-
+  goosDetail:params => {
+    return Http('/goods/detail.do', params)
+  }
 }
 
 

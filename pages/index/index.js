@@ -29,11 +29,9 @@ Page({
     })
   },
   onLoad() {
-    this.modalContent = this.selectComponent("#modal");
     this.setData({
       cate:this.data.cateList.reduce((rows, key, index) => (index % 5 == 0 ? rows.push([key]) : rows[rows.length-1].push(key)) && rows, [])
     })
-    console.log(this.data.cate)
     this.init()
   },
   init(){
@@ -46,6 +44,12 @@ Page({
   },
   addCart(e){
 
+  },
+  onShow(){
+    wx.pageScrollTo({
+      scrollTop: 0,
+      duration: 300
+    })
   },
   onPullDownRefresh(){
     wx.showNavigationBarLoading()

@@ -6,12 +6,13 @@ const Request = Object.assign({},API.ProductApi)
 Page({
   data: {
     image:app.globalData.Image,
-    cartList:[]
+    cartList:Array.from({length:3},(v,i)=>{return i})
   },
   onLoad() {
     // GetOpenId().then(res=>{
     //   this.getList()
     // })
+    console.log(this.data.cartList)
   },
   onPullDownRefresh(){
     wx.showNavigationBarLoading() //在标题栏中显示加载

@@ -7,12 +7,8 @@ const Request = Object.assign({},API.ProductApi)
 Page({
   data: {
     image:app.globalData.Image,
-    productInfo:{}
-  },
-  getType(e){
-    this.setData({
-      index:Number(e.detail.value)
-    })
+    info:{},
+    query:{}
   },
   addCart(e) {
   
@@ -21,12 +17,20 @@ Page({
     this.setData({
       query:option
     });
+    console.log(11,this.data.query)
+    this.getDetail()
     // GetOpenId().then(res=>{
     //   this.getDetail()
     // })
   },
   onHide(){
 
+  },
+  toIndex(){
+    console.log(111)
+    wx.switchTab({
+      url: '../index/index'
+    })
   },
   onPullDownRefresh(){
     wx.showNavigationBarLoading() //在标题栏中显示加载
@@ -57,12 +61,12 @@ Page({
     
   },
   getDetail(){
-    Request.productDetail({productId:this.data.query.pid}).then(res=>{
-      let info = (res.data && res.data.info)?res.data.info:{}
-      info.content = info.content?info.content.replace(/\<img/gi, '<img style="max-width:100%;height:auto;margin:auto;"'):'';
-      // info.buyMode = 2
+    Request.goosDetail({goodsId:this.data.query.id}).then(res=>{
+      let info = (res.message && res.message.goodsDTO)?res.message.goodsDTO:{};
+      info.timeText = (info.state == 1?info.beginTime:info.endTime).replace(/\s+/g, "").replace(/(月|日)/g,':').split(':');
+      console.log(info)
       this.setData({
-        productInfo:info
+        info:info
       })
     })
   },
