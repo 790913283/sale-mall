@@ -1,8 +1,8 @@
 // pages/order/order.js
 const app = getApp();
 const API = require('../../api/index.js');
-const GetOpenId = API.GetOpenId
-const Request = Object.assign({},API.ProductApi)
+const LoginTo = API.LoginTo
+const Request = Object.assign({},API.OrderApi)
 Page({
   data: {
     image:app.globalData.Image,
@@ -11,33 +11,53 @@ Page({
     pageNo:1,
     total:0,
     orderList:[],
-    top:0
+    orderStatus:[
+      {id:1,name:'全部订单'},{id:2,name:'待付款'},{id:3,name:'待发货'},{id:4,name:'待收货 '},{id:5,name:'退货'},
+    ],
+    type:1
   },
   onLoad(option) {
     this.data.query = option;
-    GetOpenId().then(res=>{
+    LoginTo().then(res=>{
+      this.setData({
+        type:Number(this.data.query.type)
+      })
       this.getList()
+    }).catch(err=>{
+      console.error(err)
     })
   },
-  goResult(e){
+  goDetail(e){
     let oid = e.currentTarget.dataset.oid;
     wx.navigateTo({
-      url: '../result/result?oid='+oid+'&type=2'
+      url: '../orderdetail/orderdetail?id='+oid
     })
   },
-  getList(flag){
-    Request.orderList({productId:this.data.query.pid,pageNo:this.data.pageNo}).then(res=>{
-      let list = (res.data && res.data.list)?res.data.list:[];
+  getType(e){
+    let type = Number(e.currentTarget.dataset.status);
+    if(type == this.data.type) return
+    this.getList(type)
+  },
+  getList(tp){
+    if(this.data.loading) return
+    this.data.loading = false;
+    if(tp){
       this.setData({
-        orderList:flag?list:this.data.orderList.concat(list),
-        total:res.data.pageTotal,
+        type:tp
+      })
+    }
+    wx.showLoading()
+    Request.orderList({type:this.data.type,prevOrderId:''}).then(res=>{
+      let list = (res.message && res.message.length)?res.message:[];
+      this.data.loading = true;
+      this.setData({
+        orderList:list,
         loading:false
       })
+      wx.hideLoading()
     }).catch(err=>{
-      this.setData({
-        loading:false,
-        pageNo:this.data.pageNo == 1 ?1:(this.data.pageNo-1)
-      })
+      this.data.loading = false;
+      wx.hideLoading()
     })
   },
   onReachBottom(){

@@ -1,0 +1,123 @@
+@import '../../_var.scss';
+.main-contain{
+  background:rgba(246,247,249,1);
+}
+.user-top{
+  height:312rpx;
+  background-image:linear-gradient(90deg,rgba(255,225,76,1) 0%,rgba(255,218,38,1) 100%);
+  .top-msg{
+    height: 200rpx;
+    display: flex;
+    align-items: center;
+    padding: 0 30rpx;
+    .user-icon{
+      width:120rpx;
+      height: 120rpx;
+      border-radius: 50%;
+    }
+    .user-code{
+      height: 88rpx;
+      background-color: #fff;
+      width:88rpx;
+    }
+    .user-name{
+      flex:1;
+      width:0;
+      height: 120rpx;
+      display: flex;
+      flex-direction: column;
+      margin: 0 24rpx;
+      justify-content: center;
+      .n-top{
+        width:100%;
+        font-size:40rpx;
+        line-height: 70rpx;
+        font-family:PingFangSC-Semibold;
+        font-weight:600;
+        color:rgba(36,38,41,1);
+        padding: 0 12rpx;
+      }
+      .n-id{
+        height:40rpx;
+        font-size:26rpx;
+        font-family:PingFangSC-Regular;
+        font-weight:400;
+        color:rgba(36,38,41,1);
+        align-items: center;
+        display: flex;
+        view{
+          padding: 0 12rpx;
+          border-radius:6rpx;
+          background:rgba(255,235,136,1);
+        }
+      }
+    }
+  }
+}
+.user-order{
+  width:680rpx;
+  height:268rpx;
+  background:rgba(255,255,255,1);
+  border-radius:13rpx;
+  margin: -104rpx auto 0;
+  .order-list{
+    height: 164rpx;
+    display: flex;
+    margin:0 30rpx;
+    justify-content: space-between;
+    align-items: center;
+    .order-item{
+      display: flex;
+      flex-direction: column;
+      .i-top{
+        width: 86rpx;
+        margin: 0 auto;
+        height: 86rpx;
+      }
+      .i-bottom{
+        color:#242629;
+        display: flex;
+        font-size: 24rpx;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+  }
+  .order-top{
+    height: 104rpx;
+    margin:0 30rpx;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    border-bottom:2rpx solid rgba(227,229,232,1);
+    font-size: 24rpx;
+    .o-1{
+      margin-right: auto;
+      color:#242629;
+      font-size: 28rpx;
+      font-weight: 600;
+    }
+  }
+}
+.user-list{
+  width:680rpx;
+  padding: 0 30rpx;
+  border-radius:13rpx;
+  background:rgba(255,255,255,1);
+  margin: 32rpx auto 0;
+  .list-item{
+    height: 104rpx;
+    display: flex;
+    align-items: center;
+    border-bottom:2rpx solid rgba(227,229,232,1);
+    color:#242629;
+    font-size: 28rpx;
+    .money{
+      color:#FF5B4D;
+      margin-left: auto;
+    }
+    .arr{
+      margin-left: 10rpx;
+    }
+  }
+}

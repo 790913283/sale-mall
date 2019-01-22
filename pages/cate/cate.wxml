@@ -1,0 +1,14 @@
+<!--pages/cate/cate.wxml-->
+<view class="main-contain">
+  <view class="cate-left">
+    <view bindtap="getType" data-id="{{item.id}}" class="left-item{{id == item.id?' item-active':''}}" wx:for="{{leftList}}" wx:key="{{index}}">
+      {{item.name}}
+    </view>
+  </view>
+  <view class="cate-main">
+    <view class="cate-item" wx:for="{{mainList}}" wx:key="{{idx}}"  wx:for-index="idx" wx:for-item="value">
+      <view class="background c-img" style="background-image:url('{{value.image}}')"></view>
+      <view class="c-text ellipsis">{{value.name}}</view>
+    </view>
+  </view>
+</view>

@@ -1,8 +1,9 @@
 {
   "navigationBarBackgroundColor": "#ffffff",
   "navigationBarTextStyle": "black",
-  "navigationBarTitleText": "礼品详情",
+  "navigationBarTitleText": "订单详情",
   "backgroundColor": "#ffffff",
   "backgroundTextStyle": "light",
-  "enablePullDownRefresh": true
+  "enablePullDownRefresh": false,
+  "onReachBottomDistance":10
 }

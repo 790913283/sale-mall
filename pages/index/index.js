@@ -2,7 +2,7 @@
 //获取应用实例
 const app = getApp();
 const API = require('../../api/index.js');
-const GetOpenId = API.GetOpenId;
+const LoginTo = API.LoginTo;
 const Request = Object.assign({},API.IndexApi);
 Page({
   data: {
@@ -35,7 +35,8 @@ Page({
     this.init()
   },
   init(){
-    this.getList()
+    LoginTo().then(res=>{this.getList()}).catch(err=>{console.error(err)})
+    
   },
   changeIndex(e){
     this.setData({

@@ -2,27 +2,34 @@
   <view class="main-contain">
     <scroll-view scroll-y="{{true}}" class="cart-list">
       <view class="g-item" wx:for="{{cartList}}" wx:key="{{index}}">
-        <view class="item-main">
-          <view class="main-select"></view>
-          <view class="main-pic background" style="background-image:url('http://image.youpinweb.com/goods_chelizi.png')"></view>
+        <view class="item-main{{item.isDel?' del-active':''}}" data-index="{{index}}"  bindtouchstart="touchstart" bindtouchend="touchend"> 
+          <view class="main-select{{filter.inArray(selectList,item.goodsId)>-1?' selected':''}}" bindtap="selectGood" data-id="{{item.goodsId}}"></view>
+          <view class="main-pic background" style="background-image:url('{{item.image}}')"></view>
           <view class="main-info">
-            <view class="info-title">圣女果约1000克</view>
-            <view class="info-price">￥8.56</view>
+            <view class="info-title">{{item.name || '---'}}</view>
+            <view class="info-price">￥{{item.price}}</view>
           </view>
           <view class="main-opt">
-            
+            <text data-index="{{index}}"  class="{{item.count == 1?'m-dis':''}}" bindtap="setNum" data-type="1">-</text><input type="number" value="{{item.count}}" disabled /><text data-index="{{index}}"  bindtap="setNum" data-type="2">+</text>
           </view>
         </view>
-        <view class="item-del">删除</view>
+        <view class="item-del" bindtap="delGoods" data-index="{{index}}" data-id="{{item.goodsId}}">删除</view>
       </view>
     </scroll-view>
     <view class="cart-sum">
       <view class="total">
         <text>合计</text>
-        <text class="money">￥8.65</text>
+        <text class="money">￥{{cartTotal}}</text>
       </view>
-      <view class="sum">
-        结算(1)
+      <view class="sum{{selectList.length?'':' s-disabled'}}">
+        结算({{selectList.length}})
       </view>
     </view>
   </view>
+  <wxs module="filter">
+  var inArray = function(arr,val){
+    return arr.indexOf(val)
+
+  };
+  module.exports = { inArray : inArray}
+</wxs>

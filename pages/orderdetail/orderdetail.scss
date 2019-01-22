@@ -1,0 +1,135 @@
+@import '../../_var.scss';
+.pay-top{
+  height: 246rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border-top:2rpx solid rgba(243,243,243,1);
+  background: #fff;
+  button{
+    margin: 0;
+    width:240rpx;
+    height:64rpx;
+    border-radius:64rpx;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28rpx;
+    color:#242629!important;
+    background-color: #fff!important;
+    margin-top: 34rpx;
+  }
+  .top-title{
+    color:#FF5B4D;
+    font-size: 36rpx;
+  }
+}
+.main-contain{
+  background:#F8F8F8;
+  padding-top: 0;
+}
+.pay-address{
+  margin-top: 16rpx;
+  padding:  0 32rpx;
+  background: #fff;
+  .add-top{
+    height: 108rpx;
+    font-size:32rpx;
+    font-family:PingFangSC-Regular;
+    font-weight:400;
+    color:rgba(36,38,41,1);
+    align-items: center;
+    border-bottom:2rpx solid rgba(243,243,243,1);
+    display: flex;
+  }
+  .add-info{
+    padding: 16rpx 0 32rpx;
+    .info-list{
+      display:flex;
+      line-height: 40rpx;
+      margin-top: 16rpx;
+      font-size: 28rpx;
+      .list-top{
+        color:#898B8F
+      }
+      .list-content{
+        flex:1;
+        color:#242629;
+        width:0;
+        margin-left: 5rpx;
+      }
+    }
+  }
+}
+.good-item{
+  height: 120rpx;
+  padding: 16rpx 0;
+  display: flex;
+  .item-img{
+    width: 120rpx;
+    height: 120rpx;
+    background-color:rgba(216,216,216,1);
+    border-radius:12rpx;
+  }
+  .item-name{
+    flex:1;
+    margin:0 15rpx;
+    width:0;
+    color:rgba(36,38,41,1);
+    font-size: 28rpx;
+    line-height: 40rpx;
+  }
+  .item-price{
+    view{
+      display: flex;
+      justify-content: flex-end;
+    }
+    .p-top{
+      font-size: 28rpx;
+      line-height: 40rpx;
+      color:#242629;
+    }
+    .p-end{
+      color:#898B8F;
+      font-size: 24rpx;
+    }
+  }
+}
+.order-item{
+  height:104rpx;
+  display:flex;
+  align-items: center;
+  color:rgba(137,139,143,1);
+  font-size: 28rpx;
+  border-bottom:2rpx solid rgba(243,243,243,1);
+  &.pay-item{
+    color:rgba(36,38,41,1);
+  }
+  .o-m{
+    margin-left: auto;
+  }
+}
+.pay-btn{
+  display: flex;
+  margin-top: 16rpx;
+  height: 100rpx;
+  background: #fff;
+  view{
+    flex:1;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    font-size:28rpx;
+    font-family:PingFang-SC-Regular;
+    font-weight:400;
+    color:rgba(36,38,41,1);
+    &.pay-c{
+      font-weight:500;
+      color:rgba(36,38,41,1);
+      background:linear-gradient(90deg,rgba(255,225,76,1) 0%,rgba(255,218,38,1) 100%);
+    }
+  }
+}

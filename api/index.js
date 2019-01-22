@@ -18,7 +18,7 @@ const mpproduct = "https://mp.aa.net/mall"; //生产
 const mptest = "http://118.178.224.153:8080/xq"; //测试
 const mpdev = "https://mpdev.aa.net/mall"; //开发
 // const baseUrl = `${mptest}/lbwx/`;
-const baseUrl = `${mptest}/`;
+const baseUrl = `${mptest}`;
 // const baseUrl = `${mpproduct}/`;
 // const openid = 'oVP3EwtegMYxJ3NaTnY64ugt29Uk';
 // const AppId = 'wx3993a0615c5782b9';
@@ -49,8 +49,9 @@ const handlerError = (res, reject,resolve) => {
 
 const Http = (url, params, type, flag) => {
   let param = JSON.parse(JSON.stringify(params));
-  let stroage = wx.getStorageSync('openId');
-  param.openId = stroage.openid;
+  // let stroage = wx.getStorageSync('openId');
+  let loginInfo = wx.getStorageSync('login') || {};
+  // param.openId = stroage.openid;
   return new Promise((resolve, reject) => {
     let req = flag ? url : baseUrl + url
     wx.request({
@@ -58,12 +59,16 @@ const Http = (url, params, type, flag) => {
       data: param,
       method: type || 'POST',
       header: {
-        'content-type': 'application/x-www-form-urlencoded' // 默认值
+        'content-type': 'application/x-www-form-urlencoded', // 默认值
+        'xqui':loginInfo.xiaoquToken
       },
       success(res) {
         if (res.data.code == 200 || flag) {
           if (flag == 'openId') {
             wx.setStorageSync(flag, res.data.data.info)
+          }
+          if (flag == 'login') {
+            wx.setStorageSync(flag, res.data.message)
           }
           resolve(res.data?res.data:res)
           return
@@ -98,10 +103,11 @@ const WxLogin = () => {
     wx.login({
       success: res => {
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
-        // let url = 'https://api.weixin.qq.com/sns/jscode2session?appid=' + AppId + '&secret=' + Secret + '&js_code=' + res.code + '&grant_type=authorization_code';
+        // let url = 'https://api.weixin.qq.com/sns/jscode2session?appid=wx5b5edca4934a591b&secret=36bd18013eb4cb37a929074822ba3379&js_code=' + res.code + '&grant_type=authorization_code';
         // resolve(url)
         // console.log(res)
-        let url = `${baseUrl}getMineOpenId?code=${res.code}`;
+        console.log(res)
+        let url = `${baseUrl}/user/login.do?code=${res.code}`;
         resolve(url)
       },
       fail: res => {
@@ -165,6 +171,16 @@ const GetOpenId = () => {
   return WxLogin().then(url => Http(url, {}, 'GET', 'openId'))
 }
 
+const LoginTo = () => {
+  let login = wx.getStorageSync('login');
+  if (login) {
+    return new Promise((resolve, reject) => {
+      resolve(login)
+    })
+  }
+  return WxLogin().then(url => Http(url, {}, 'GET', 'login'))
+}
+
 const LoginApi = {
   regist: params => {
     return GetOpenId().then(()=>Http('api/registerBinding', params))
@@ -186,12 +202,38 @@ const IndexApi = {
   }
 }
 
-const ProductApi = {
-  goosDetail:params => {
-    return Http('/goods/detail.do', params)
+const OrderApi = {
+  orderList: params => {
+    return Http('/order/list.do', params)
+  },
+  orderDetail: params => {
+    return Http('/order/detail.do', params)
   }
 }
 
+const ProductApi = {
+  goosDetail:params => {
+    return Http('/goods/detail.do', params)
+  },
+  getCate:params => {
+    return Http('/other/mulu.do', params)
+  }
+}
+
+const CartApi = {
+  cartList: params => {
+    return Http('/shopcars/goods.do', params)
+  },
+  addCart: params => {
+    return Http('/shopcars/add.do', params)
+  },
+  delCart: params => {
+    return Http('/shopcars/remove.do', params)
+  },
+  increaseCart: params => {
+    return Http('/shopcars/incresea.do',params)
+  }
+}
 
 module.exports = {
   Http,
@@ -201,5 +243,8 @@ module.exports = {
   WxAuth,
   LoginApi,
   IndexApi,
+  LoginTo,
+  OrderApi,
+  CartApi,
   ProductApi
 }

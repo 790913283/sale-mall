@@ -27,6 +27,10 @@ const Shop = {
   swipOne:'http://file.learningbee.net/plan/201811/28/e72a906e-dabc-8c5c-10a8-ab295e3a662e.png',
 }
 
+const User = {
+  card:''
+}
+
 const Image = Object.assign(
   {},
   Common,

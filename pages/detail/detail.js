@@ -2,34 +2,34 @@
 // pages/shop/shop.js
 const app = getApp();
 const API = require('../../api/index.js');
-const GetOpenId = API.GetOpenId
-const Request = Object.assign({},API.ProductApi)
+const LoginTo = API.LoginTo
+const Request = Object.assign({},API.ProductApi,API.CartApi)
 Page({
   data: {
     image:app.globalData.Image,
     info:{},
-    query:{}
-  },
-  addCart(e) {
-  
+    query:{},
+    loading:false
   },
   onLoad(option) {
     this.setData({
       query:option
     });
-    console.log(11,this.data.query)
-    this.getDetail()
-    // GetOpenId().then(res=>{
-    //   this.getDetail()
-    // })
+    LoginTo().then(res=>{
+      this.getDetail()
+    })
   },
   onHide(){
 
   },
   toIndex(){
-    console.log(111)
     wx.switchTab({
       url: '../index/index'
+    })
+  },
+  toCart(){
+    wx.switchTab({
+      url: '../cart/cart'
     })
   },
   onPullDownRefresh(){
@@ -43,10 +43,13 @@ Page({
   buy(){
 
   },
-  subData(){
-   
-    Request.subOrder({productId:this.data.query.pid,campusId:this.data.updata.cid}).then(res=>{
-      this.modalContent.hideModal();
+  addCart(){
+    if(this.data.loading) return
+    this.setData({
+      loading:true
+    })
+    
+    Request.addCart({goodsId:this.data.info.goodsId,count:1}).then(res=>{
       this.setData({
         loading:false
       })

@@ -1,0 +1,68 @@
+<!--pages/orderdetail/orderdetail.wxml-->
+<view class="main-contain">
+  <view class="pay-top">
+    <view class="top-title"><text>待付款</text></view>
+    <button plain="{{true}}}" disabled="disabled" style="border:2rpx solid rgba(229,229,229,1);">联系小区长</button>
+  </view>
+  <view class="pay-address">
+    <view class="add-top">配送信息</view>
+    <view class="add-info">
+      <view class="info-list">
+        <view class="list-top">小区信息：</view>
+        <view class="list-content">长青园小区-嘉定区2132号</view>
+      </view>
+      <view class="info-list">
+        <view class="list-top">配送信息：</view>
+        <view class="list-content">长青园小区-嘉定区2132号</view>
+      </view>
+      <view class="info-list">
+        <view class="list-top">收件人：</view>
+        <view class="list-content">长青园小区-嘉定区2132号</view>
+      </view>
+    </view>
+  </view>
+  <view class="pay-address">
+    <view class="add-top">商品信息</view>
+    <view class="add-info">
+      <view class="good-item background">
+        <view class="background item-img" style="background-image:url('http://image.youpinweb.com/huologguo.png}')"></view>
+        <view class="item-name">河北野生大苹果1000g</view>
+        <view class="item-price">
+          <view class="p-top">￥122</view>
+          <view class="p-end">x2</view>
+        </view>
+      </view>
+      
+    </view>
+  </view>
+  <view class="pay-address">
+    <view class="add-top">订单信息</view>
+    <view class="add-info" style="padding-bottom:0">
+      <view class="order-item">
+        订单编号：134562749763527
+      </view>
+      <view class="order-item" style="border:0">
+        创建时间：134562749763527
+      </view>
+    </view>
+  </view>
+  <view class="pay-address">
+    <view class="add-info" style="padding-bottom:0">
+      <view class="order-item pay-item">
+        商品金额<text class="o-m">￥2.12</text>
+      </view>
+      <view class="order-item pay-item">
+        订单金额<text class="o-m">￥2.22</text>
+      </view>
+      <view class="order-item pay-item">
+        商品金额<text class="o-m">￥2.12</text>
+      </view>
+      <view class="order-item pay-item" style="border:0">
+        订单金额<text class="o-m">￥2.22</text>
+      </view>
+    </view>
+  </view>
+  <view class="pay-btn">
+    <view class="pay-n">取消订单</view><view class="pay-c">去支付</view>
+  </view>
+</view>

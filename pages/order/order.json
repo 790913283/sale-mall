@@ -1,9 +1,9 @@
 {
   "navigationBarBackgroundColor": "#ffffff",
   "navigationBarTextStyle": "black",
-  "navigationBarTitleText": "兑换记录",
+  "navigationBarTitleText": "订单记录",
   "backgroundColor": "#ffffff",
   "backgroundTextStyle": "light",
-  "enablePullDownRefresh": true,
+  "enablePullDownRefresh": false,
   "onReachBottomDistance":10
 }

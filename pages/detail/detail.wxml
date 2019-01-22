@@ -64,12 +64,12 @@
           <image mode="scaleToFill" src="../../static/index.png"></image>
           <view>首页</view>
         </view>
-         <view class="icon-w">
+         <view class="icon-w" bindtap="toCart">
           <image mode="scaleToFill" src="../../static/cart.png"></image>
           <view>购物车</view>
         </view>
       </view> 
-      <button bindtap="buy" style="border:0"  plain="{{true}}" class="buy-btn b-cart">加入购物车</button>
+      <button bindtap="addCart" style="border:0"  plain="{{true}}" class="buy-btn b-cart">加入购物车</button>
       <button bindtap="buy" style="border:0"  plain="{{true}}" class="buy-btn b-quick">立即购买</button>
     </view>
   </view>

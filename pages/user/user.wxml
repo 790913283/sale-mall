@@ -1,0 +1,54 @@
+<!--pages/user/user.wxml-->
+<view class="main-contain">
+  <view class="user-top">
+    <view class="top-msg">
+      <view class="user-icon background" style="background-image:url('http://image.youpinweb.com/huologguo.png')"></view>
+      <view class="user-name">
+        <view class="n-top ellipsis">是的</view>
+        <view class="n-id"><view>ID：1231561</view></view>
+      </view>
+      <view class="user-code background" style="background-image:url('{{image.code}}')"></view>
+    </view>
+  </view>
+  <view class="user-order">
+    <view class="order-top" bindtap="toOrder" data-type="1">
+      <text class="o-1">订单</text><text>查看全部</text><text>></text>
+    </view>
+    <view class="order-list">
+      <view class="order-item" bindtap="toOrder" data-type="2">
+        <view class="i-top"></view>
+        <view class="i-bottom">待付款</view>
+      </view>
+      <view class="order-item" bindtap="toOrder" data-type="3">
+        <view class="i-top"></view>
+        <view class="i-bottom">待发货</view>
+      </view>
+      <view class="order-item" bindtap="toOrder" data-type="4">
+        <view class="i-top"></view>
+        <view class="i-bottom">待收货</view>
+      </view>
+      <view class="order-item" bindtap="toOrder" data-type="5">
+        <view class="i-top"></view>
+        <view class="i-bottom">退货/退款</view>
+      </view>
+    </view>
+  </view>
+  <view class="user-list">
+    <view class="list-item">
+      <text>我的零钱</text><text class="money">￥10.99</text><text class="arr">></text>
+    </view>
+    <view class="list-item">
+       <text>我的优惠券</text><text class="arr" style="margin-left:auto">></text>
+    </view>
+    <view class="list-item">
+      <text>小区信息</text><text class="arr" style="margin-left:auto">></text>
+    </view>
+    <view class="list-item">
+      <text>商务合作</text><text class="arr" style="margin-left:auto">></text>
+    </view>
+    <view class="list-item" style="border:0">
+      <text>小区长</text><text class="arr" style="margin-left:auto">></text>
+    </view>
+  </view>
+</view>
+
