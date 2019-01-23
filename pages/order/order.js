@@ -28,7 +28,7 @@ Page({
     })
   },
   goDetail(e){
-    let oid = e.currentTarget.dataset.oid;
+    let oid = e.currentTarget.dataset.id;
     wx.navigateTo({
       url: '../orderdetail/orderdetail?id='+oid
     })

@@ -1,7 +1,7 @@
 <!--pages/orderdetail/orderdetail.wxml-->
 <view class="main-contain">
   <view class="pay-top">
-    <view class="top-title"><text>待付款</text></view>
+    <view class="top-title"><text>{{orderInfo.statusString}}</text></view>
     <button plain="{{true}}}" disabled="disabled" style="border:2rpx solid rgba(229,229,229,1);">联系小区长</button>
   </view>
   <view class="pay-address">
@@ -24,12 +24,12 @@
   <view class="pay-address">
     <view class="add-top">商品信息</view>
     <view class="add-info">
-      <view class="good-item background">
-        <view class="background item-img" style="background-image:url('http://image.youpinweb.com/huologguo.png}')"></view>
-        <view class="item-name">河北野生大苹果1000g</view>
+      <view class="good-item" wx:for="{{orderInfo.goodsList}}" wx:key="{{index}}">
+        <view class="background item-img" style="background-image:url('{{item.image}}')"></view>
+        <view class="item-name">{{item.name}}</view>
         <view class="item-price">
-          <view class="p-top">￥122</view>
-          <view class="p-end">x2</view>
+          <view class="p-top">￥{{item.price}}</view>
+          <view class="p-end">x{{item.count}}</view>
         </view>
       </view>
       
@@ -49,16 +49,16 @@
   <view class="pay-address">
     <view class="add-info" style="padding-bottom:0">
       <view class="order-item pay-item">
-        商品金额<text class="o-m">￥2.12</text>
+        商品金额<text class="o-m">￥{{orderInfo.totalGoodsPrice}}</text>
       </view>
       <view class="order-item pay-item">
-        订单金额<text class="o-m">￥2.22</text>
+        订单金额<text class="o-m">￥{{orderInfo.orderTotalPrice}}</text>
       </view>
       <view class="order-item pay-item">
-        商品金额<text class="o-m">￥2.12</text>
+        优惠券<text class="o-m">￥{{orderInfo.youhuiquan}}</text>
       </view>
       <view class="order-item pay-item" style="border:0">
-        订单金额<text class="o-m">￥2.22</text>
+        零钱<text class="o-m">￥{{orderInfo.lingqian || '0.00'}}</text>
       </view>
     </view>
   </view>

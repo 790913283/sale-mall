@@ -25,7 +25,7 @@ Page({
     })
   },
   getDetail(){
-    Request.orderDetail({orderId:this.data.id}).then(res=>{
+    Request.orderDetail({orderId:this.data.query.id}).then(res=>{
       let info = res.message?res.message:{}
       this.setData({
         orderInfo:info
