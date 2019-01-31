@@ -220,6 +220,15 @@ const ProductApi = {
   }
 }
 
+const MasterApi = {
+  masterDetail:params => {
+    return Http('/master/page.do', params)
+  },
+  getCate:params => {
+    return Http('/other/mulu.do', params)
+  }
+}
+
 const CartApi = {
   cartList: params => {
     return Http('/shopcars/goods.do', params)
@@ -241,6 +250,7 @@ module.exports = {
   WxSetting,
   WxtUserInfo,
   WxAuth,
+  MasterApi,
   LoginApi,
   IndexApi,
   LoginTo,

@@ -1,7 +1,7 @@
 // pages/orderdetail/orderdetail.js
 const app = getApp();
 const API = require('../../api/index.js');
-const LoginTo = API.LoginTo
+const LoginTo = API.LoginTo;
 const Request = Object.assign({},API.OrderApi)
 Page({
   data: {

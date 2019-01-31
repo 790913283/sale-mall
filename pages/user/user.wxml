@@ -46,7 +46,7 @@
     <view class="list-item">
       <text>商务合作</text><text class="arr" style="margin-left:auto">></text>
     </view>
-    <view class="list-item" style="border:0">
+    <view class="list-item" style="border:0" bindtap="toPage" data-name="sales">
       <text>小区长</text><text class="arr" style="margin-left:auto">></text>
     </view>
   </view>

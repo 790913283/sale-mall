@@ -1,2 +1,71 @@
 <!--pages/sales/sales.wxml-->
-<text>pages/sales/sales.wxml</text>
+<view class="main-contain">
+  <view class="sales-top">
+    <view class="top-list">
+      <view class="list-item">
+        <view class="item-top">
+          {{masterInfo.totalMoneyStr || '0.00'}}
+        </view>
+        <view class="item-bottom">
+          我的收入(元)
+        </view>
+      </view>
+      <view class="list-item">
+        <view class="item-top">
+         {{masterInfo.tixianMoney || '0.00'}}
+        </view>
+        <view class="item-bottom">
+          已发放(元)
+        </view>
+      </view>
+      <view class="list-item">
+        <view class="item-top">
+          {{masterInfo.totanoTixianMoneyStrlMoney || '0.00'}}
+        </view>
+        <view class="item-bottom">
+          未发放(元)
+        </view>
+      </view>
+    </view>
+    <view class="top-list" style="border:0">
+      <view class="list-item">
+        <view class="item-top">
+          {{masterInfo.dayStr || '0.00'}}
+        </view>
+        <view class="item-bottom">
+          今日成交(元)
+        </view>
+      </view>
+      <view class="list-item">
+        <view class="item-top">
+          {{masterInfo.thisMonthStr || '0.00'}}
+        </view>
+        <view class="item-bottom">
+          本月成交(元)
+        </view>
+      </view>
+      <view class="list-item">
+        <view class="item-top">
+          {{masterInfo.prevMonthSrt || '0.00'}}
+        </view>
+        <view class="item-bottom">
+          上月成交(元)
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="sales-list"  wx:for="{{orderList}}" wx:key="{{index}}">
+    <view class="order-top">
+      <text>{{item.xiaoquName}}</text>
+    </view>
+    <view class="item-goods" wx:key="{{idx}}" wx:for="{{item.returnList}}" wx:for-index="idx" wx:for-item="value">
+      <view class="background g-icon" style="background-image:url('{{value.goodsImage}}')"></view>
+      <view class="g-name">{{value.goodsName || '---'}}</view>
+      <view class="g-price">
+        <view class="m-p">￥{{value.price || 0}}</view>
+        <view class="m-n">x{{value.goodsCount || 0}}</view>
+      </view>
+      <button  class="see-b"  plain="{{true}}" bindtap="login">查看</button>
+    </view>
+  </view>
+</view>
