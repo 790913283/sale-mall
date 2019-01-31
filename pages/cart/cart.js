@@ -20,6 +20,12 @@ Page({
     })
     
   },
+  toSubmit(){
+    if(!this.data.selectList.length) return
+    wx.navigateTo({
+      url: '../submit/submit'
+    })
+  },
   touchend(e){
     let idx = Number(e.currentTarget.dataset.index);
     this.data.end = e.changedTouches[0].pageX;

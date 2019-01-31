@@ -1,0 +1,53 @@
+<!--pages/submit/submit.wxml-->
+<view class="main-contain">
+  <view class="add-info">
+    <view class="info-list">
+      <view class="list-top">小区：</view>
+      <view class="list-content">长青园小区-嘉定区2132号</view>
+    </view>
+    <view class="info-list">
+      <view class="list-top">小区市长：</view>
+      <view class="list-content">长青园小区-嘉定区2132号</view>
+    </view>
+    <view class="info-list">
+      <view class="list-top">配送：</view>
+      <view class="list-content">长青园小区-嘉定区2132号</view>
+    </view>
+    <view class="info-list">
+      <view class="list-top">收件人：</view>
+      <view class="list-content">长青园小区-嘉定区2132号</view>
+    </view>
+  </view>
+  <view class="order-list">
+    <view class="order-item" wx:for="{{orderList}}" wx:key="{{index}}">
+      <view class="order-top">
+        <text>订单1</text><text class="o-time">12-12 04:30结束</text>
+      </view>
+      <view class="item-goods" wx:key="{{idx}}" wx:for="{{item.goodsList}}" wx:for-index="idx" wx:for-item="value">
+          <view class="background g-icon" style="background-image:url('{{value.image}}')"></view>
+          <view class="g-name">{{value.name || '---'}}</view>
+          <view class="g-price">
+            <view class="m-p">￥{{value.price || 0}}</view>
+            <view class="m-n">x{{value.count || 0}}</view>
+          </view>
+        </view>
+    </view>
+  </view>
+  <view class="pay-address">
+    <view class="add-info" style="padding-bottom:0">
+      <view class="order-items pay-item">
+        订单金总额<text class="o-m">￥{{orderInfo.orderTotalPrice ||  '0.00'}}</text>
+      </view>
+      <view class="order-items pay-item">
+        优惠券<text class="o-m">￥{{orderInfo.youhuiquan || '0.00'}}</text>
+      </view>
+      <view class="order-items pay-item" style="border:0">
+        零钱支付<text class="o-m">￥{{orderInfo.lingqian || '0.00'}}</text>
+      </view>
+    </view>
+  </view>
+  <view class="pay-btn">
+    <view class="pay-n">￥200</view><view class="pay-c">去支付</view>
+  </view>
+</view>
+

@@ -1,0 +1,33 @@
+.item-goods{
+  display: flex;
+  padding: 16rpx 32rpx;
+  .g-icon{
+    height: 120rpx;
+    width:120rpx;
+    border-radius:12rpx;
+  }
+  .g-name{
+    height: 120rpx;
+    margin: 0 20rpx;
+    flex:1;
+    width:0;
+    line-height: 40rpx;
+    color:rgba(36,38,41,1);
+    font-size:28rpx;
+  }
+  .g-price{
+    height:120rpx;
+    .m-p{
+      display: flex;
+      font-size: 28rpx;
+      color:#242629;
+      line-height: 40rpx;
+    }
+    .m-n{
+      line-height: 40rpx;
+      font-size: 24rpx;
+      color:#898B8F;
+      text-align: right;
+    }
+  }
+}

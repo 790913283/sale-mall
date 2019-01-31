@@ -21,7 +21,7 @@
         <text>合计</text>
         <text class="money">￥{{cartTotal}}</text>
       </view>
-      <view class="sum{{selectList.length?'':' s-disabled'}}">
+      <view bindtap="toSubmit" class="sum{{selectList.length?'':' s-disabled'}}">
         结算({{selectList.length}})
       </view>
     </view>

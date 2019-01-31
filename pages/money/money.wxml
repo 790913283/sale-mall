@@ -1,0 +1,26 @@
+<!--pages/money/money.wxml-->
+<view class="main-contain">
+  <view class="money-top">
+    <view class="top-c">
+      ￥800
+    </view>
+    <view class="top-t">可用余额</view>
+  </view>
+  <view class="m-list">
+    <view class="m-item">
+      <view class="item-img background"></view>
+      <view class="item-detail">
+        <view class="d-top ellipsis">
+          撒大苏打
+        </view>
+        <view class="d-bottom ellipsis">
+          2018-11-21
+        </view>
+      </view>
+      <view class="item-con">
+        + ￥1990
+      </view>
+    </view>
+  </view>
+  
+</view>

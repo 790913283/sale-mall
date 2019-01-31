@@ -1,0 +1,96 @@
+@import '../../_var.scss';
+@import '../../goods';
+.main-contain{
+  padding-top: 16rpx;
+  background: #f6f7f9;
+}
+.add-info{
+  padding:24rpx 32rpx 32rpx;
+  background: #fff;
+  .info-list{
+    display:flex;
+    line-height: 40rpx;
+    margin-top: 16rpx;
+    font-size: 28rpx;
+    .list-top{
+      color:#898B8F
+    }
+    .list-content{
+      flex:1;
+      color:#242629;
+      width:0;
+      margin-left: 5rpx;
+    }
+  }
+}
+.order-list{
+  background: #fff;
+  margin-top: 16rpx;
+  .order-item{
+    border-bottom:2rpx solid rgba(243,243,243,.3);
+  }
+  .order-top{
+    height: 106rpx;
+    display: flex;
+    align-items: center;
+    font-size:32rpx;
+    font-family:PingFangSC-Semibold;
+    font-weight:600;
+    color:rgba(36,38,41,1);
+    border-bottom:2rpx solid rgba(243,243,243,1);
+    margin: 0 32rpx;
+    .o-time{
+      margin-left: auto;
+      color:rgba(255,91,77,1);
+    }
+  }
+}
+.pay-address{
+  margin-top: 16rpx;
+  padding:  0 16rpx;
+  background: #fff;
+  .order-items{
+    height:60rpx;
+    display:flex;
+    align-items: center;
+    color:rgba(137,139,143,1);
+    font-size: 28rpx;
+    &.pay-item{
+      font-family:PingFangSC-Medium;
+      font-weight:500;
+      color:rgba(36,38,41,1);
+    }
+    .o-m{
+      margin-left: auto;
+    }
+  }
+}
+.pay-btn{
+  display: flex;
+  margin-top: 16rpx;
+  height: 100rpx;
+  background: #fff;
+  view{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    font-size:28rpx;
+    font-family:PingFang-SC-Regular;
+    font-weight:400;
+    color:rgba(36,38,41,1);
+    &.pay-n{
+      flex:1;
+      font-size:32rpx;
+      justify-content: flex-start;
+      padding-left: 32rpx;
+      color:rgba(36,38,41,1);
+    }
+    &.pay-c{
+      width:240rpx;
+      font-weight:500;
+      color:rgba(36,38,41,1);
+      background:linear-gradient(90deg,rgba(255,225,76,1) 0%,rgba(255,218,38,1) 100%);
+    }
+  }
+}

@@ -34,13 +34,13 @@
     </view>
   </view>
   <view class="user-list">
-    <view class="list-item">
+    <view class="list-item" bindtap="toPage" data-name="money">
       <text>我的零钱</text><text class="money">￥10.99</text><text class="arr">></text>
     </view>
     <view class="list-item">
        <text>我的优惠券</text><text class="arr" style="margin-left:auto">></text>
     </view>
-    <view class="list-item">
+    <view class="list-item" bindtap="toPage" data-name="address">
       <text>小区信息</text><text class="arr" style="margin-left:auto">></text>
     </view>
     <view class="list-item">

@@ -10,7 +10,11 @@
     "pages/cate/cate",
     "pages/user/user",
     "pages/service/service",
-    "pages/orderdetail/orderdetail"
+    "pages/orderdetail/orderdetail",
+    "pages/submit/submit",
+    "pages/address/address",
+    "pages/sales/sales",
+    "pages/money/money"
   ],
   "tabBar": {
     "selectedColor": "#333333",

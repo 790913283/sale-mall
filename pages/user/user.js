@@ -30,6 +30,12 @@ Page({
   onHide(){
 
   },
+  toPage(e){
+    let name = e.currentTarget.dataset.name;
+    wx.navigateTo({
+      url: `../${name}/${name}`
+    })
+  },
   toOrder(e){
     let type = Number(e.currentTarget.dataset.type)
     wx.navigateTo({
