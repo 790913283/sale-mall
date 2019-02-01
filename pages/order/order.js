@@ -27,6 +27,11 @@ Page({
       console.error(err)
     })
   },
+  toCancel(){
+    wx.navigateTo({
+      url: '../service/service'
+    })
+  },
   goDetail(e){
     let oid = e.currentTarget.dataset.id;
     wx.navigateTo({

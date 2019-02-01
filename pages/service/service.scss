@@ -1,0 +1,113 @@
+@import '../../_var.scss';
+@import '../../goods';
+.main-contain{
+  padding-top: 16rpx;
+  background: #f6f7f9;
+}
+.order-list{
+  background: #fff;
+  .item-goods{
+    padding: 32rpx;
+    .g-icon{
+      width: 160rpx;
+      height: 160rpx;
+    }
+    .g-name{
+      height: 160rpx;
+    }
+    .g-price{
+      height: 160rpx;
+    }
+  }
+}
+.service-type{
+  margin-top:16rpx;
+  background: #fff;
+  padding-left:32rpx;
+  .t-name{
+    font-size:28rpx;
+    font-family:PingFangSC-Light;
+    font-weight:300;
+    color:rgba(36,38,41,1);
+  }
+  .type-head{
+    height: 128rpx;
+    border-bottom:2rpx solid rgba(227,229,232,1);
+    display: flex;
+    align-items: center;
+    button{
+      padding: 0 52rpx;
+      margin:0 0 0 32rpx;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height:64rpx;
+      border-radius:32rpx;
+      border:2rpx solid rgba(187,187,187,1); 
+      font-size:32rpx;
+      font-family:PingFangSC-Regular;
+      font-weight:400;
+      color:rgba(36,38,41,1);
+    }
+  }
+  .desc-title{
+    padding: 32rpx 0;
+  }
+  .type-img{
+    padding-bottom: 30rpx;
+    .img-list{
+      display: flex;
+    }
+    .img-item{
+      margin-right: 12rpx;
+      width:160rpx;
+      height: 160rpx;
+      &.img-up{
+        border:2rpx dotted rgba(184,189,196,1);
+      }
+    }
+  }
+  .desc-wrap{
+    margin-top: 12rpx;
+    border-bottom:2rpx solid rgba(227,229,232,1);
+    padding-bottom: 30rpx;
+    position: relative;
+    .text-n{
+      position: absolute;
+      bottom:30rpx;
+      font-size:24rpx;
+      font-family:PingFangSC-Regular;
+      font-weight:400;
+      color:rgba(137,139,143,1);
+      line-height:25rpx;
+      right: 32rpx;
+    }
+    textarea{
+      width: 100%;
+      height: 100%;
+      font-size: 28rpx;
+      color:rgba(36,38,41,1);
+      border:0;
+      height: 180rpx;
+      padding-bottom: 35rpx;
+    }
+  }
+}
+.submit-service{
+  background: #ffe73d;
+  display: flex;
+  align-items: center;
+  margin-top:16rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size:32rpx;
+  font-family:PingFangSC-Regular;
+  font-weight:400;
+  color:rgba(36,38,41,1);
+  height: 100rpx;
+}
+.main-content{
+  flex:1;
+
+}

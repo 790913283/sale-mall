@@ -21,7 +21,7 @@
           待付款:<text class="t-pri">￥{{item.totalGoodsPrice}}</text>(含运费:¥{{item.yunfei}})
         </view>
         <view class="item-confirm">
-          <text>取消订单</text>
+          <text bindtap="toCancel">取消订单</text>
           <button style="border:0"  plain="{{true}}" bindtap="login">待收货</button>
         </view>
       </view>

@@ -1,2 +1,40 @@
 <!--pages/service/service.wxml-->
-<text>pages/service/service.wxml</text>
+<view class="main-contain">
+  <view class="main-content">
+    <view class="order-list">
+      <view class="order-item" wx:for="{{orderList}}" wx:key="{{index}}">
+        <view class="item-goods">
+            <view class="background g-icon" style="background-image:url('{{value.image}}')"></view>
+            <view class="g-name">{{item.name || '---'}}</view>
+            <view class="g-price">
+              <view class="m-p">￥{{item.price || 0}}</view>
+              <view class="m-n">x{{item.count || 0}}</view>
+            </view>
+          </view>
+      </view>
+    </view>
+    <view class="service-type">
+      <view class="type-head">
+        <text class="t-name">售后类型：</text>
+        <button style="margin-left:8rpx" plain="{{true}}" data-type="1" bindtap="getType">退货</button>
+        <button plain="{{true}}" data-type="2" bindtap="getType">退款</button>
+      </view>
+      <view class="type-desc">
+        <view class="desc-title"><text class="t-name">问题描述</text></view>
+        <view class="desc-wrap">
+          <textarea />
+          <text class="text-n">(0/100)</text>
+        </view>
+      </view>
+      <view class="type-img">
+        <view class="desc-title"><text class="t-name">商品图片</text></view>
+        <view class="img-list">
+          <view class="img-item background img-up">
+            
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="submit-service">提交</view>
+</view>
